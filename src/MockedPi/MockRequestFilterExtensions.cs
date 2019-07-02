@@ -47,6 +47,23 @@ namespace MockedPi
 
         /// <summary>
         /// Matches the <see cref="HttpRequest.Path"/> with the provided <see cref="PathString"/>,
+        /// returning true if the paths are exact matches.
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <param name="other"></param>
+        /// <param name="comparison"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static MockRequestFilter WhenPathEquals(this MockRequestFilter filter,
+            PathString other, StringComparison comparison = StringComparison.OrdinalIgnoreCase)
+        {
+            ParamAssert.NotNull(filter, nameof(filter));
+
+            return filter.When(ctx => ctx.Request.Path.Equals(other, comparison));
+        }
+
+        /// <summary>
+        /// Matches the <see cref="HttpRequest.Path"/> with the provided <see cref="PathString"/>,
         /// returning true if the beginning is the same.
         /// </summary>
         /// <param name="filter"></param>
