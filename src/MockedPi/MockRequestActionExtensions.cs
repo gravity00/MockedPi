@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace MockedPi
 {
@@ -24,6 +26,36 @@ namespace MockedPi
                 ctx.Response.StatusCode = statusCode;
                 return Task.CompletedTask;
             });
+        }
+
+        /// <summary>
+        /// Writes the content as a response using <see cref="Encoding.UTF8"/>.
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        public static MockRequestAction ApplyContent(this MockRequestAction action, string content)
+        {
+            ParamAssert.NotNull(action, nameof(action));
+            ParamAssert.NotNull(content, nameof(content));
+
+            return action.Apply(async ctx => await ctx.Response.WriteAsync(content, ctx.RequestAborted));
+        }
+
+        /// <summary>
+        /// Writes the content as a response using the given encoding.
+        /// </summary>
+        /// <param name="action"></param>
+        /// <param name="content"></param>
+        /// <param name="encoding"></param>
+        /// <returns></returns>
+        public static MockRequestAction ApplyContent(this MockRequestAction action, string content, Encoding encoding)
+        {
+            ParamAssert.NotNull(action, nameof(action));
+            ParamAssert.NotNull(content, nameof(content));
+            ParamAssert.NotNull(encoding, nameof(encoding));
+
+            return action.Apply(async ctx => await ctx.Response.WriteAsync(content, encoding, ctx.RequestAborted));
         }
     }
 }
