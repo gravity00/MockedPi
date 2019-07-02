@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace MockedPi
 {
@@ -30,11 +31,22 @@ namespace MockedPi
         internal RequestDelegate BuildHandler()
         {
             if (_handlers.Count == 0)
-                throw new InvalidOperationException("Response handler collection is empty");
+                throw new InvalidOperationException("Response handler collection is empty. At least an handler should be provided.");
 
             var handlers = _handlers.ToArray();
             return async ctx =>
             {
+                var logger = (ILogger<MockRequestAction>)
+                    ctx.RequestServices.GetService(typeof(ILogger<MockRequestAction>));
+
+                if (ctx.Response.HasStarted)
+                {
+                    logger.LogWarning("Request matched with a filter but response already started, no handlers will be executed");
+                    return;
+                }
+
+                logger.LogDebug("Request matched with a filter, executing handlers");
+
                 foreach (var handler in handlers)
                     await handler(ctx);
             };
