@@ -9,9 +9,26 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{CF3FB014
 		tools\MockedPi.snk = tools\MockedPi.snk
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F2C1EF3D-49E8-493D-88B5-D7149E83606B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockedPi", "src\MockedPi\MockedPi.csproj", "{037FC73E-A947-4215-9CF8-D87CC780C0A6}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{037FC73E-A947-4215-9CF8-D87CC780C0A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{037FC73E-A947-4215-9CF8-D87CC780C0A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{037FC73E-A947-4215-9CF8-D87CC780C0A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{037FC73E-A947-4215-9CF8-D87CC780C0A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{037FC73E-A947-4215-9CF8-D87CC780C0A6} = {F2C1EF3D-49E8-493D-88B5-D7149E83606B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C79E1A4E-8075-45E3-9080-6D3BEB4672A0}

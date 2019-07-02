@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>MockedPi</RootNamespace>
+    <AssemblyTitle>MockedPi</AssemblyTitle>
+    <AssemblyName>MockedPi</AssemblyName>
+    <Description>Lightweight library for mocking HTTP endpoints using ASP.NET Core.</Description>
+    <Product>MockedPi</Product>
+    <Company>Net.JoaoSimoes</Company>
+    <Copyright>Copyright © 2019 João Simões</Copyright>
+    <Authors>João Simões</Authors>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>../../tools/MockedPi.snk</AssemblyOriginatorKeyFile>
+    <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
+    <SignAssembly>true</SignAssembly>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GenerateAssemblyTitleAttribute>true</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>true</GenerateAssemblyDescriptionAttribute>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>MockedPi</PackageId>
+    <PackageTags>aspnetcore;mock;http;rest</PackageTags>
+    <PackageIconUrl></PackageIconUrl>
+    <PackageProjectUrl>https://github.com/gravity00/MockedPi</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/gravity00/MockedPi/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/gravity00/MockedPi</RepositoryUrl>
+    <GeneratePackageOnBuild Condition=" '$(BuildConfiguration)' == 'release' ">true</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.19001</FileVersion>
+    <VersionPrefix>1.0.0-rc01</VersionPrefix>
+  </PropertyGroup>
+
+</Project>
