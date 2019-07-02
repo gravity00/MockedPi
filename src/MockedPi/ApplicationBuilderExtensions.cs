@@ -15,6 +15,7 @@ namespace Microsoft.AspNetCore.Builder
         /// <param name="builder"></param>
         /// <param name="config"></param>
         /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static IApplicationBuilder MapMock(this IApplicationBuilder builder, Action<MockRequestBuilder> config)
         {
             ParamAssert.NotNull(builder, nameof(builder));
