@@ -13,16 +13,18 @@ namespace Microsoft.AspNetCore.Builder
         /// Maps a mock contition
         /// </summary>
         /// <param name="builder"></param>
-        /// <param name="config"></param>
+        /// <param name="filterConfig"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static IApplicationBuilder MapMock(this IApplicationBuilder builder, Action<MockRequestBuilder> config)
+        public static IApplicationBuilder MapMock(this IApplicationBuilder builder, 
+            Action<MockRequestFilter> filterConfig)
         {
             ParamAssert.NotNull(builder, nameof(builder));
-            ParamAssert.NotNull(config, nameof(config));
+            ParamAssert.NotNull(filterConfig, nameof(filterConfig));
 
-            var mockBuilder = new MockRequestBuilder();
-            config(mockBuilder);
+            var mockBuilder = new MockRequestFilter();
+            filterConfig(mockBuilder);
+            var predicate = mockBuilder.BuildPredicate();
 
             return builder;
         }
